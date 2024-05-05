@@ -5,10 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: 134715024813.dkr.ecr.ap-south-1.amazonaws.com/aecr
+  repository: be4929/dockerize
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -40,8 +39,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
-  port: 8080
+  type: NodePort
+  port: 9000
 
 ingress:
   enabled: false
@@ -70,15 +69,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
 
 autoscaling:
   enabled: false
